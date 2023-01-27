@@ -6,6 +6,7 @@ var cors = require('cors')
 app.use(cors())
 const stripe = require('stripe')('sk_test_51MTLclSEGy4UZS1BDSr8EwvIucpDgeKek40cJBpJ0R1AxkuFR8pP0hp38ccF6hbrvrb0L8b1gWkx1asoAuFycHcS00fdDXcnXq');
 
+app.use(express.json())
 
 app.post('/', getSession)
 
