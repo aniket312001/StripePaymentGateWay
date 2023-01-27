@@ -33,7 +33,7 @@ async function  getSession(req, res) {
 		  
 		  price_data: {
 			currency: 'usd',
-			unit_amount: req.body.unit_amount,
+			unit_amount: (Math.round(Number(req.body.unit_amount)) * 100),
 			product_data: {
 			  name: req.body.name,
 			  description: req.body.description,
