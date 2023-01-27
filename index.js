@@ -4,14 +4,29 @@ const app = express()
 
 var cors = require('cors')
 app.use(cors())
-const stripe = require('stripe')('sk_test_51MTLclSEGy4UZS1BDSr8EwvIucpDgeKek40cJBpJ0R1AxkuFR8pP0hp38ccF6hbrvrb0L8b1gWkx1asoAuFycHcS00fdDXcnXq');
 
 app.use(express.json())
+
+
+var multer = require('multer');
+var upload = multer();
+
+// for parsing application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true })); 
+
+// for parsing multipart/form-data
+app.use(upload.array()); 
+app.use(express.static('public'));
+
+const stripe = require('stripe')('sk_test_51MTLclSEGy4UZS1BDSr8EwvIucpDgeKek40cJBpJ0R1AxkuFR8pP0hp38ccF6hbrvrb0L8b1gWkx1asoAuFycHcS00fdDXcnXq');
+
 
 app.post('/', getSession)
 
 
 async function  getSession(req, res) {
+	console.log(req.body)
+
 	const session = await stripe.checkout.sessions.create({
 		payment_method_types: ['card'],
 		line_items: [{
