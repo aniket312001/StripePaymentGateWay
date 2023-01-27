@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(upload.array()); 
 app.use(express.static('public'));
 
-const stripe = require('stripe')('sk_test_51MTLclSEGy4UZS1BDSr8EwvIucpDgeKek40cJBpJ0R1AxkuFR8pP0hp38ccF6hbrvrb0L8b1gWkx1asoAuFycHcS00fdDXcnXq');
+const stripe = require('stripe')('sk_test_51LSeX9Frn2e3SuHGBGcfRzZofAzZW7KOBaHa4GIiLRqDarqtcg96KKpQtB42o7G9apKTzI7tkXUx5LPRqVP5DHz700O45GFmKP');
 
 
 app.post('/', getSession)
